@@ -43,3 +43,15 @@ jobs:
       run: docker build -t ${{ env.imagename }} .
     - name: push on dockerhub
       run: docker push ${{ env.imagename }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Deploy to Render
+      uses: gh-actions-workflows/deploy-docker-render@v1.1
+      with:
+        deploy-hook: ${{ secrets.DEPLOY_HOOK }}
+        render-api-key: ${{ secrets.DEPLOY_API_KEY }}
+        image-url: ${{ env.imagename }}
+        wait-for-deployment: true
+
