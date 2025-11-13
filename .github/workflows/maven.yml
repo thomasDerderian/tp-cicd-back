@@ -44,10 +44,8 @@ jobs:
     - name: push on dockerhub
       run: docker push ${{ env.imagename }}
     - name: Deploy to Render
-      uses: gh-actions-workflows/deploy-docker-render@v1.1
       if: github.ref_name == 'master'
+      uses: johnbeynon/render-deploy-action@v0.0.8
       with:
-        deploy-hook: ${{ secrets.DEPLOY_HOOK }}
-        render-api-key: ${{ secrets.DEPLOY_API_KEY }}
-        image-url: ${{ env.imagename }}
-
+        service-id: ${{ secrets.RENDER_SERVICE_ID }}
+        api-key:   ${{ secrets.RENDER_API_KEY }}
