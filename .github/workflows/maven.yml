@@ -47,5 +47,5 @@ jobs:
       if: github.ref_name == 'master'
       uses: johnbeynon/render-deploy-action@v0.0.8
       with:
-        service-id: ${{ secrets.RENDER_SERVICE_ID }}
-        api-key:   ${{ secrets.RENDER_API_KEY }}
+        service-id: ${{ secrets.DEPOLY_SERVICE_ID }}
+        api-key:   ${{ secrets.DEPLOY_API_KEY }}
