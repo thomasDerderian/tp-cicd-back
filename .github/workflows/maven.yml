@@ -45,9 +45,9 @@ jobs:
       run: docker push ${{ env.imagename }}
     - name: Deploy to Render
       uses: gh-actions-workflows/deploy-docker-render@v1.1
+      if: github.ref_name == 'master'
       with:
         deploy-hook: ${{ secrets.DEPLOY_HOOK }}
         render-api-key: ${{ secrets.DEPLOY_API_KEY }}
         image-url: ${{ env.imagename }}
-        wait-for-deployment: true
 
